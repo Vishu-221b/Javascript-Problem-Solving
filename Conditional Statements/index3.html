@@ -13,7 +13,39 @@
 
     <script>
 
-        
+        let a = -5;
+        let b = -2;
+        let c = -6;
+        let d = 0;
+        let f = -1;
+        let e;
+
+        if(a>b && a>c && a>d && a>f)
+        {
+            e = a + " is the largest of the five numbers.";
+        }
+
+        else if (b>a && b>c && b>d && b>f)
+        {
+            e = b + " is the largest of the five numbers.";
+        }
+
+        else if (c>a && c>b && c>d && c>f)
+        {
+            e = c + " is the largest of the five numbers.";
+        }
+
+        else if (d>a && d>c && d>b && d>f)
+        {
+            e = d + " is the largest of the five numbers.";
+        }
+
+        else{
+            e = f + " is the largest of the five numbers.";
+        }
+
+        document.getElementById("demo").innerHTML = e;
+
     </script>
     
 </body>
