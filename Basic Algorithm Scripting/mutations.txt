@@ -1,0 +1,12 @@
+function mutation(arr) {
+  let str1 = arr[0].toLowerCase(); // convert the first string to lowercase
+  let str2 = arr[1].toLowerCase(); // convert the second string to lowercase
+  
+  for (let i = 0; i < str2.length; i++) { // iterate over characters in str2
+    if (str1.indexOf(str2[i]) === -1) { // check if current character is present in str1
+      return false; // if not, return false
+    }
+  }
+  
+  return true; // if all characters are present, return true
+}
