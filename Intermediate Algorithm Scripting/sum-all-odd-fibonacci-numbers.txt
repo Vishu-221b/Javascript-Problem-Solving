@@ -1,0 +1,17 @@
+function sumFibs(num) {
+  let sum = 0;
+  let fib1 = 0;
+  let fib2 = 1;
+  while (fib2 <= num) {
+    if (fib2 % 2 !== 0) { // check if the current number is odd
+      sum += fib2; // add the current number to the sum
+    }
+    const nextFib = fib1 + fib2; // calculate the next Fibonacci number
+    fib1 = fib2; // update the previous two numbers
+    fib2 = nextFib;
+  }
+  return sum; // return the sum of the odd Fibonacci numbers
+}
+
+
+sumFibs(4);
