@@ -1,0 +1,15 @@
+function uniteUnique(...arrays) {
+  const uniqueValues = new Set();
+
+for(let array of arrays)
+{
+  for(let value of array)
+  {
+    uniqueValues.add(value);
+  }
+}
+
+return Array.from(uniqueValues);
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
