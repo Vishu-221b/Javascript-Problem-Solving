@@ -1,0 +1,13 @@
+function telephoneCheck(str) {
+  // create a regex pattern to match the valid US phone numbers
+  const regex = /^(1\s?)?(\(\d{3}\)|\d{3})[\s-]?\d{3}[\s-]?\d{4}$/;
+  
+  // use the test method of regex to check if the string matches the pattern
+  return regex.test(str);
+}
+
+console.log(telephoneCheck("555-555-5555"));  // true
+console.log(telephoneCheck("1 555-555-5555"));  // true
+console.log(telephoneCheck("1 (555) 555-5555"));  // true
+console.log(telephoneCheck("5555555555"));  // true
+console.log(telephoneCheck("555-5555"));  // false
