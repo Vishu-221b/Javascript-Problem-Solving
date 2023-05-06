@@ -1,0 +1,25 @@
+function smallestCommons(arr) {
+  // sort the array in numerical order
+  arr.sort((a, b) =>
+     a - b
+  );
+
+  // create an array with all the numbers between the two given numbers
+  var numbers = [];
+  for (var i = arr[0]; i <= arr[1]; i++) {
+    numbers.push(i);
+  }
+
+  // loop through multiples of the larger number until we find a number that is divisible by all the numbers in the array
+  var lcm = arr[1];
+  for (var i = arr[1] - 1; i >= arr[0]; i--) {
+    if (lcm % i) {
+      lcm += arr[1];
+      i = arr[1];
+    }
+  }
+
+  return lcm;
+}
+
+smallestCommons([1, 5]);
