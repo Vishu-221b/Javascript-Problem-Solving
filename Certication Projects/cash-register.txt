@@ -1,0 +1,56 @@
+function checkCashRegister(price, cash, cid) {
+  const currencyValues = {
+    "PENNY": 0.01,
+    "NICKEL": 0.05,
+    "DIME": 0.1,
+    "QUARTER": 0.25,
+    "ONE": 1,
+    "FIVE": 5,
+    "TEN": 10,
+    "TWENTY": 20,
+    "ONE HUNDRED": 100
+  };
+
+  let change = cash - price;
+  let totalCid = cid.reduce((acc, curr) => acc + curr[1], 0);
+
+  if (totalCid < change) {
+    return {status: "INSUFFICIENT_FUNDS", change: []};
+  }
+
+  if (totalCid === change) {
+    return {status: "CLOSED", change: cid};
+  }
+
+  cid = cid.reverse();
+  let result = [];
+
+  for (let i = 0; i < cid.length; i++) {
+    let currencyName = cid[i][0];
+    let currencyTotal = cid[i][1];
+    let currencyValue = currencyValues[currencyName];
+    let currencyAmount = currencyTotal / currencyValue;
+    let currencyToReturn = 0;
+
+    while (change >= currencyValue && currencyAmount > 0) {
+      change -= currencyValue;
+      change = Math.round(change * 100) / 100;
+      currencyAmount--;
+      currencyToReturn++;
+    }
+
+    if (currencyToReturn > 0) {
+      result.push([currencyName, currencyToReturn * currencyValue]);
+    }
+  }
+
+  if (change > 0) {
+    return {status: "INSUFFICIENT_FUNDS", change: []};
+  }
+
+  return {status: "OPEN", change: result};
+}
+
+
+
+checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
